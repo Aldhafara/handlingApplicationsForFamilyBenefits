@@ -1,6 +1,6 @@
-package pl.noCompany.handlingApplicationsForFamilyBenefits.User.model;
+package pl.noCompany.handlingApplicationsForFamilyBenefits.Person.model;
 
-enum SexEnum {
+public enum SexEnum {
     MALE("mężczyzna"),
     FEMALE("kobieta");
 

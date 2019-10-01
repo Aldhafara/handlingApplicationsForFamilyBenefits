@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="header_common::header">
+    <title id="pageTitle">+600 Family - Home</title>
+</head>
+<body>
+<nav th:fragment="navSection"  class="navbar navbar-inverse navbar-expand-lg justify-content-center navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">+600 Family</a>
+</nav>
+
+<div class="container">
+
+    <form th:object="${createPersonRequestForm}" th:action="@{/users/add}" class="form-horizontal" action="#" method="post" enctype="multipart/form-data">
+        <br/><h2>Create account</h2><br/>
+        <div class="col-md-6">
+            <div class="col-md-12 form-group">
+                <label for="element-firstName" class="data-label">First name: </label>
+                <input type ="text" th:field="*{firstName}" id="element-firstName" class="form-control" maxlength="255">
+                <div th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">Name Error</div>
+            </div>
+
+            <div class="col-md-12 form-group">
+                <label for="element-lastName" class="data-label">Last name: </label>
+                <input type ="text" th:field="*{lastName}" id="element-lastName" class="form-control" maxlength="255">
+                <div th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">Last name Error</div>
+            </div>
+
+            <div class="col-md-12 form-group">
+                <label for="element-lastName" class="data-label">PESEL: </label>
+                <input type ="text" th:field="*{pesel}" id="element-pesel" class="form-control" maxlength="11" minlength="11">
+                <div th:if="${#fields.hasErrors('pesel')}" th:errors="*{pesel}">PESEL Error</div>
+            </div>
+
+            <div class="col-md-12 form-group">
+                <label for="element-maritalStatus" class="data-label">Marital status: </label>
+                <select class="form-control" th:field="*{maritalStatus}" id="element-maritalStatus">
+                    <option th:each="state : ${T(pl.noCompany.handlingApplicationsForFamilyBenefits.Person.model.MaritalStatus).values()}"
+                            th:value="${state}"
+                            th:text="${state}">
+                    </option>
+                </select>
+            </div>
+
+            <div class="action-bar">
+                <br/>
+                <button class="btn btn-primary right-button" id="element-submitButton" type="submit">Create my account</button>
+                <br/><br/>
+                <a class="btn btn-primary" href="/login" role="button">Already have an account? Sign in</a>
+            </div>
+        </div>
+    </form>
+
+</div>
+</body>
+</html>

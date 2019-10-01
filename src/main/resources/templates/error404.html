@@ -1,0 +1,13 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="header_common::header">
+    <title id="pageTitle">+600 Family - Error 404</title>
+</head>
+<body>
+<nav th:replace="~{header_common :: navSection}" class="navbar navbar-inverse"></nav>
+<div class="container">
+    <h1 >ERROR 404</h1>
+    <p th:text="${token}"></p>
+</div>
+</body>
+</html>

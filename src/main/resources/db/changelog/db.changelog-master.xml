@@ -1,0 +1,21 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="sequences" author="marek.nawrocki" context="prod">
+        <sqlFile path="db/sequences.sql"/>
+    </changeSet>
+
+<!--    <changeSet id="create_users" author="paulina.chmielewska" context="prod">-->
+<!--        <sqlFile path="db/create_users.sql"/>-->
+<!--    </changeSet>-->
+
+
+
+    <changeSet id="insert_users" author="marek.nawrocki" context="test">
+        <sqlFile path="db/insert_persons.sql"/>
+    </changeSet>
+
+
+</databaseChangeLog>

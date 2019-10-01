@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="header_common::header">
+   <title id="pageTitle">+600 Family - Users</title>
+</head>
+<body>
+<nav th:replace="~{header_common :: navSection}" class="navbar navbar-inverse"></nav>
+<div class="container mt-5">
+    <table class="table table-hover table-striped">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">PESEL</th>
+            <th scope="col">Name</th>
+            <th scope="col">Sex</th>
+            <th scope="col">Marital status</th>
+            <th scope="col">Birth date</th>
+<!--            <th scope="col">Action</th>-->
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:if="${persons.empty}">
+            <td class="text-center" colspan="6">No Users Available</td>
+        </tr>
+
+        <tr th:each="user : ${persons}">
+            <th scope="row" th:text="${user.id}">id</th>
+            <td th:text="${#numbers.formatDecimal(user.pesel, 11 ,0)}">PESEL</td>
+            <td th:text="|${user.name} ${user.surname}|">Name</td>
+            <td th:text="${user.sex}">Sex</td>
+            <td th:text="${user.maritalStatus}">Marital status</td>
+            <td th:text="${#temporals.format(user.birthDate, 'dd-MM-yyyy')}">Birth date</td>
+<!--            <td><a role="button" href="/users" th:href="|@{/users/details/}${user.id}|" class="btn btn-primary">Details</a></td>-->
+        </tr>
+        </tbody>
+    </table>
+
+    <div class="row">
+                <div class="col-4">
+                    <a role="button" href="/users" th:href="|@{/users/add/}|" class="btn btn-primary">Add person</a>
+                </div>
+    </div>
+    <div th:if="${errorAlert != null}" style="position: fixed; top: 10px; margin: auto;" class="alert alert-warning alert-dismissible fade show" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <strong>Holy guacamole! </strong><span th:text="${errorAlert}"></span>
+    </div>
+
+
+</div>
+</body>
+</html>

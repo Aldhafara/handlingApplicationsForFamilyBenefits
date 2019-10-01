@@ -1,4 +1,4 @@
-package pl.noCompany.handlingApplicationsForFamilyBenefits.User.model;
+package pl.noCompany.handlingApplicationsForFamilyBenefits.Person.model;
 
 public enum MaritalStatus {
     MARRIED("żonaty/zamężna"),
